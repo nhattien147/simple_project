@@ -1,0 +1,20 @@
+/* Reset margin mặc định của body để không bị lệch */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;  /* canh giữa theo chiều ngang */
+  align-items: center;      /* canh giữa theo chiều dọc */
+  min-height: 100vh;        /* cao bằng 100% chiều cao viewport */
+  background: #f5f5f5;      /* tùy chọn: màu nền cho đẹp */
+}
+
+/* Hộp login */
+.wrapper {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #fff;         /* cho nền trắng để nổi lên trên */
+}
