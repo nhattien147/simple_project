@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Smart Monitoring - Dual Charts (Dark Theme)</title>
+  <title>Login Page</title>
   <!-- Include Chart.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Font Awesome for icons -->
@@ -16,101 +16,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>simple IOT project with Azure</h1>
-  </header>
+  <div>
 
-  <div class="cards-container">
-    <div class="card">
-      <i class="fas fa-thermometer-half temp-icon"></i>
-      <div class="card-title">Temperature</div>
-      <div class="card-value" id="tempValue"></div>
-      <div class="unit">Celsius</div>
-    </div>
-    <div class="card">
-      <i class="fas fa-tint humid-icon"></i>
-      <div class="card-title">Humidity</div>
-      <div class="card-value" id="humidValue"></div>
-      <div class="unit">Relative</div>
-    </div>
   </div>
-
-  <div class="charts-container">
-    <div class="chart-wrapper">
-      <h2>Temperature (°C)</h2>
-      <canvas id="tempChart"></canvas>
-    </div>
-    <div class="chart-wrapper">
-      <h2>Humidity (%)</h2>
-      <canvas id="humidityChart"></canvas>
-    </div>
-  </div>
-
-  <script>
-    // Sample data arrays
-    const labels = ["15:00", "15:05", "15:10", "15:15", "15:20", "15:25", "15:30", "15:35"];
-    const temperatureData = [17, 18, 18, 19, 20, 19, 19, 18];
-    const humidityData = [45, 50, 48, 47, 52, 49, 46, 44];
-
-    // Temperature Chart Configuration
-    const tempConfig = {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Temperature (°C)',
-          data: temperatureData,
-          borderColor: '#e74c3c',
-          backgroundColor: 'rgba(231, 76, 60, 0.2)',
-          tension: 0.4,
-          pointRadius: 3
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { labels: { color: '#e0e0e0' } },
-          title: { display: false }
-        },
-        scales: {
-          x: { ticks: { color: '#e0e0e0' }, grid: { color: 'rgba(255,255,255,0.1)' } },
-          y: { ticks: { color: '#e0e0e0' }, grid: { color: 'rgba(255,255,255,0.1)' } }
-        }
-      }
-    };
-
-    // Humidity Chart Configuration
-    const humidityConfig = {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Humidity (%)',
-          data: humidityData,
-          borderColor: '#3498db',
-          backgroundColor: 'rgba(52,152,219,0.2)',
-          tension: 0.4,
-          pointRadius: 3
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { labels: { color: '#e0e0e0' } },
-          title: { display: false }
-        },
-        scales: {
-          x: { ticks: { color: '#e0e0e0' }, grid: { color: 'rgba(255,255,255,0.1)' } },
-          y: { ticks: { color: '#e0e0e0' }, grid: { color: 'rgba(255,255,255,0.1)' } }
-        }
-      }
-    };
-
-    const tempCtx = document.getElementById('tempChart').getContext('2d');
-    new Chart(tempCtx, tempConfig);
-
-    const humidCtx = document.getElementById('humidityChart').getContext('2d');
-    new Chart(humidCtx, humidityConfig);
-  </script>
 </body>
 </html>
