@@ -87,6 +87,6 @@ body {
 }
 
 #button:active {
-  transform: translateY(1px);
+  transform: translateY(1px); /*Nút “nhún” xuống 1px, giống bấm nút vật lý.*/
   box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
 }
