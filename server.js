@@ -1,11 +1,11 @@
-const express = require("express");
-const app = express();
+const express = require("express"); /* import thư viện Express */
+const app = express(); /* khởi tạo ứng dụng Express */
 
-app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.set("view engine", "ejs"); /* thiết lập EJS làm engine view */
+app.use(express.static("public")); /* phục vụ các tệp tĩnh từ thư mục "public" */
 
 app.get("/", (req, res) => {
-  res.render("notindex");
+  res.render("notindex"); /* render tệp views/notindex.ejs */
 });
 
 app.listen(6969, () => {
