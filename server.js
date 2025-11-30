@@ -1,21 +1,23 @@
 const express = require("express"); /* import thư viện Express */
 const app = express(); /* khởi tạo ứng dụng Express */
 const bcrypt = require("bcrypt"); /* import thư viện bcrypt */
+const session = require("express-session"); /* import express-session */
 
 const testUser = "tien";
 const testPassword = "tien";
 
 app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 } /* session tồn tại 60 giây */,
+  })
+);
+
+app.use(
   express.urlencoded({ extended: false })
 ); /* phân tích cú pháp các biểu mẫu URL-encoded */
-
-app.post("/login", async (req, res) => {
-  if (req.body.username === testUser && req.body.password === testPassword) {
-    console.log(testPassword);
-    console.log(testUser);
-    res.redirect("/afterlogin"); /* chuyển hướng nếu đăng nhập thành công */
-  }
-});
 
 app.set("views", "./views"); /* thiết lập thư mục views */
 app.set("view engine", "ejs"); /* thiết lập EJS làm engine view */
@@ -24,7 +26,20 @@ app.use(
 ); /* phục vụ các tệp tĩnh từ thư mục "public" */
 
 app.get("/", (req, res) => {
-  res.render("notindex"); /* render tệp views/notindex.ejs */
+  const error = req.session.error || null;
+  delete req.session.error; /* xóa message sau khi đã lấy */
+  res.render("notindex", { error: error }); /* render tệp views/notindex.ejs */
+});
+
+app.post("/", async (req, res) => {
+  if (req.body.username === testUser && req.body.password === testPassword) {
+    console.log("Login success:", req.body.username);
+    delete req.session.error; /* xóa lỗi nếu có */
+    res.redirect("/afterlogin");
+  } else {
+    req.session.error = "Wrong Username or Password!";
+    res.redirect("/");
+  }
 });
 
 app.get("/afterlogin", (req, res) => {
