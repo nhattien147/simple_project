@@ -5,7 +5,7 @@ WORKDIR /app
 # Copy package manifests first to leverage Docker cache
 COPY package.json package-lock.json* ./
 
-# Install dependencies (use npm ci when lockfile is present)
+# Install dependencies 
 RUN npm ci --only=production && npm cache clean --force
 
 # Copy app source

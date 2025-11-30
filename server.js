@@ -45,6 +45,4 @@ app.get("/afterlogin", (req, res) => {
   res.render("afterlogin"); /* render tệp views/afterlogin.ejs */
 });
 
-app.listen(6969, () => {
-  console.log("Server running on http://localhost:6969");
-});
+app.listen(6969);
