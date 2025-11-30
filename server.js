@@ -33,7 +33,6 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req, res) => {
   if (req.body.username === testUser && req.body.password === testPassword) {
-    console.log("Login success:", req.body.username);
     delete req.session.error; /* xóa lỗi nếu có */
     res.redirect("/afterlogin");
   } else {
